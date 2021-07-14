@@ -1,6 +1,14 @@
 import logger from '../../helpers/logger';
+import bcrypt from 'bcrypt';
+import JWT from 'jsonwebtoken';
+import aws from 'aws-sdk';
 import Sequelize from 'sequelize';
 const Op = Sequelize.Op;
+const { JWT_SECRET } = process.env;
+const s3 = new aws.S3({
+    signatureVersion: 'v4',
+    region: 'eu-central-1',
+});
 
 export default function resolver() {
     const { db } = this;
@@ -84,23 +92,15 @@ export default function resolver() {
                 return Post.findAll({order: [['createdAt', 'DESC']]});
             },
             chats(root, args, context) {
-                return User.findAll().then((users) => {
-                    if (!users.length) {
-                        return [];
-                    }
-
-                    const usersRow = users[0];
-
-                    return Chat.findAll({
-                        include: [{
-                            model: User,
-                            required: true,
-                            through: { where: { userId: usersRow.id } },
-                        },
-                        {
-                            model: Message,
-                        }],
-                    });
+                return Chat.findAll({
+                    include: [{
+                        model: User,
+                        required: true,
+                        through: { where: { userId: context.user.id } },
+                    },
+                    {
+                        model: Message,
+                    }],
                 });
             },
             chat(root, { chatId }, context) {
@@ -114,8 +114,62 @@ export default function resolver() {
                     }],
                 });
             },
+            currentUser(root, args, context) {
+                return context.user;
+            },
         },
         RootMutation: {
+            signup(root, { email, password, username }, context) {
+                return User.findAll({
+                    where: {
+                        [Op.or]: [{email}, {username}]
+                    },
+                    raw: true,
+                }).then(async (users) => {
+                    if(users.length) {
+                        throw new Error('User already exists');
+                    } else {
+                        return bcrypt.hash(password, 10).then((hash) => {
+                            return User.create({
+                                email,
+                                password: hash,
+                                username,
+                                activated: 1,
+                            }).then((newUser) => {
+                                const token = JWT.sign({ email, id: newUser.id }, JWT_SECRET, { expiresIn: '1d' });
+                                return {
+                                    token
+                                };
+                            });
+                        });
+                    }
+                });
+            },
+            login(root, { email, password }, context) {
+                return User.findAll({
+                    where: {
+                        email
+                    },
+                    raw: true
+                }).then(async (users) => {
+                    if(users.length = 1) {
+                        const user = users[0];
+                        const passwordValid = await bcrypt.compare(password, user.password);
+                        if (!passwordValid) {
+                            throw new Error('Password does not match');
+                        }
+                        const token = JWT.sign({ email, id: user.id }, JWT_SECRET, {
+                            expiresIn: '1d'
+                        });
+
+                        return {
+                            token
+                        };
+                    } else {
+                        throw new Error("User not found");
+                    }
+                });
+            },
             addChat(root, { chat }, context) {
                 return Chat.create().then((newChat) => {
                     return Promise.all([
@@ -191,6 +245,32 @@ export default function resolver() {
                         level: 'error',
                         message: err.message,
                     });
+                });
+            },
+            async uploadAvatar(root, { file }, context) {
+                const { stream, filename, mimetype, encoding } = await file;
+                const bucket = 'apollo-book';
+                const params = {
+                    Bucket: bucket,
+                    Key: context.user.id + '/' + filename,
+                    ACL: 'public-read',
+                    Body: stream
+                };
+
+                const response = await s3.upload(params).promise();
+
+                return User.update({
+                    avatar: response.Location
+                },
+                {
+                    where: {
+                        id: context.user.id
+                    }
+                }).then(() => {
+                    return {
+                        filename: filename,
+                        url: response.Location
+                    }
                 });
             },
         },

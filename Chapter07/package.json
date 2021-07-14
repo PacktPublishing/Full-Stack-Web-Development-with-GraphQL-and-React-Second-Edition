@@ -1,0 +1,70 @@
+{
+  "name": "graphbook",
+  "version": "0.0.1",
+  "description": "Hands-on-Full-Stack-Web-Development-with-GraphQL-and-React-2nd-Edition",
+  "main": "index.js",
+  "scripts": {
+    "client:build": "webpack --config webpack.client.build.config.js",
+    "client": "webpack serve --devtool inline-source-map --hot --config webpack.client.config.js",
+    "server": "JWT_SECRET=awv4BcIzsRysXkhoSAb8t8lNENgXSqBruVlLwd45kGdYjeJHLap9LUJ1t9DTdw36DvLcWs3qEkPyCY6vOyNljlh2Er952h2gDzYwG82rs1qfTzdVIg89KTaQ4SWI1YGY NODE_ENV=development nodemon --exec babel-node --plugins require-context-hook --watch src/server src/server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sebi55/Hands-on-Full-Stack-Web-Development-with-GraphQL-and-React-2nd-Edition.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sebi55/Hands-on-Full-Stack-Web-Development-with-GraphQL-and-React-2nd-Edition/issues"
+  },
+  "homepage": "https://github.com/Sebi55/Hands-on-Full-Stack-Web-Development-with-GraphQL-and-React-2nd-Edition#readme",
+  "dependencies": {
+    "@apollo/client": "^3.3.19",
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "apollo-server-express": "^2.21.2",
+    "apollo-upload-client": "^16.0.0",
+    "aws-sdk": "^2.939.0",
+    "bcrypt": "^5.0.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "helmet": "^4.4.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.2.5",
+    "nodemon": "^2.0.7",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-cropper": "^2.1.8",
+    "react-dom": "^17.0.1",
+    "react-dropzone": "^11.3.4",
+    "react-helmet": "^6.1.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-modal": "^3.14.3",
+    "sequelize": "^6.6.2",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.1",
+    "@babel/node": "^7.13.10",
+    "@babel/preset-env": "^7.13.5",
+    "@babel/preset-react": "^7.12.13",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-require-context-hook": "^1.0.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^5.0.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.2.0",
+    "mini-css-extract-plugin": "^1.3.9",
+    "react-styleguidist": "^11.1.7",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.24.0",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

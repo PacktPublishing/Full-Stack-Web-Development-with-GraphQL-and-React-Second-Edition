@@ -154,7 +154,7 @@ export default function resolver() {
                             throw new Error('Password does not match');
                         }
                         const token = JWT.sign({ email, id: user.id }, JWT_SECRET, {
-                            expiresIn: '1m'
+                            expiresIn: '1d'
                         });
 
                         return {
@@ -197,8 +197,7 @@ export default function resolver() {
                         });
                     });
                 });
-              },
-
+            },
             addPost(root, { post }, context) {
                 return User.findAll().then((users) => {
                     const usersRow = users[0];
