@@ -10,4 +10,4 @@ export const GET_CURRENT_USER = gql`
   }
 `;
 
-export const useCurrentUserQuery = () => useLazyQuery(GET_CURRENT_USER);
+export const useCurrentUserQuery = (options) => useLazyQuery(GET_CURRENT_USER, options);

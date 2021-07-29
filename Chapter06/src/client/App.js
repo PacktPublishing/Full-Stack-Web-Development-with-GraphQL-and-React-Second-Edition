@@ -12,7 +12,12 @@ import '../../assets/css/style.css';
 
 const App = ({ client }) => {
     const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('jwt'));
-    const [loadCurrentUser, { error, data }] = useCurrentUserQuery();
+    const [currentUser, setCurrentUser] = useState(null);
+    const [loadCurrentUser, { error, data }] = useCurrentUserQuery({
+        onCompleted() {
+            setCurrentUser(data?.currentUser);
+        }
+    });
 
     useEffect(() => {
         const unsubscribe = client.onClearStore(
@@ -30,8 +35,10 @@ const App = ({ client }) => {
     useEffect(() => {
         if(loggedIn) {
             loadCurrentUser();
+        } else {
+            setCurrentUser(null);
         }
-    }, [loggedIn])
+    }, [loggedIn]);
 
     return (
         <div className="container">
@@ -39,11 +46,11 @@ const App = ({ client }) => {
                 <title>Graphbook - Feed</title>
                 <meta name="description" content="Newsfeed of all your friends on Graphbook" />
             </Helmet>
-            {loggedIn && data && data.currentUser && (
+            {loggedIn && currentUser && (
                 <div>
-                    <Bar currentUser={data.currentUser} changeLoginState={setLoggedIn} />
-                    <Feed currentUser={data.currentUser} />
-                    <Chats currentUser={data.currentUser} />
+                    <Bar changeLoginState={setLoggedIn} />
+                    <Feed />
+                    <Chats />
                 </div>
             )}
             {!loggedIn && <LoginRegisterForm changeLoginState={setLoggedIn} />}

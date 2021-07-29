@@ -7,9 +7,9 @@ export const UserConsumer = ({ children }) => {
     <ApolloConsumer>
       {client => {
         // Use client.readQuery to get the current logged in user.
-        const { currentUser } = client.readQuery({ query: GET_CURRENT_USER });
+        const result = client.readQuery({ query: GET_CURRENT_USER });
         return React.Children.map(children, function(child){
-          return React.cloneElement(child, { user: currentUser });
+          return React.cloneElement(child, { user: result?.currentUser ? result.currentUser : null });
         });
       }}
     </ApolloConsumer>

@@ -5,6 +5,7 @@ const Logout = ({ changeLoginState, client }) => {
   const logout = () => {
     localStorage.removeItem('jwt');
     changeLoginState(false);
+    client.stop();
     client.resetStore();
   }
 
