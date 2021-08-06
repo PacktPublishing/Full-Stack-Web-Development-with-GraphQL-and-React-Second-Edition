@@ -9,12 +9,7 @@ import 'cropperjs/dist/cropper.css';
 
 const App = ({ client }) => {
     const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('jwt'));
-    const [currentUser, setCurrentUser] = useState(null);
-    const [loadCurrentUser, { data, loading }] = useCurrentUserQuery({
-        onCompleted() {
-            setCurrentUser(data?.currentUser);
-        }
-    });
+    const { data, error, loading } = useCurrentUserQuery();
 
     useEffect(() => {
         const unsubscribe = client.onClearStore(
@@ -28,14 +23,6 @@ const App = ({ client }) => {
             unsubscribe();
         }
     }, []);
-
-    useEffect(() => {
-        if(loggedIn) {
-            loadCurrentUser();
-        } else {
-            setCurrentUser(null);
-        }
-    }, [loggedIn]);
 
     return (
         <div className="container">

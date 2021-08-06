@@ -6,7 +6,7 @@
   "scripts": {
     "client:build": "webpack --config webpack.client.build.config.js",
     "client": "webpack serve --devtool inline-source-map --hot --config webpack.client.config.js",
-    "server": "NODE_ENV=development nodemon --exec babel-node --plugins require-context-hook --watch src/server src/server/index.js",
+    "server": "nodemon --exec babel-node --plugins require-context-hook --watch src/server src/server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

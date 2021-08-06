@@ -13,12 +13,7 @@ import 'cropperjs/dist/cropper.css';
 
 const App = ({ client }) => {
     const [loggedIn, setLoggedIn] = useState(!!localStorage.getItem('jwt'));
-    const [currentUser, setCurrentUser] = useState(null);
-    const [loadCurrentUser, { error, data }] = useCurrentUserQuery({
-        onCompleted() {
-            setCurrentUser(data?.currentUser);
-        }
-    });
+    const { data, error, loading } = useCurrentUserQuery();
 
     useEffect(() => {
         const unsubscribe = client.onClearStore(
@@ -33,21 +28,13 @@ const App = ({ client }) => {
         }
     }, []);
 
-    useEffect(() => {
-        if(loggedIn) {
-            loadCurrentUser();
-        } else {
-            setCurrentUser(null);
-        }
-    }, [loggedIn]);
-
     return (
         <div className="container">
             <Helmet>
                 <title>Graphbook - Feed</title>
                 <meta name="description" content="Newsfeed of all your friends on Graphbook" />
             </Helmet>
-            {loggedIn && currentUser && (
+            {loggedIn && (
                 <div>
                     <Bar changeLoginState={setLoggedIn} />
                     <Feed />

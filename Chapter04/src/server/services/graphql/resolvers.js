@@ -120,8 +120,7 @@ export default function resolver() {
                         });
                     });
                 });
-              },
-
+            },
             addPost(root, { post }, context) {
                 return User.findAll().then((users) => {
                     const usersRow = users[0];

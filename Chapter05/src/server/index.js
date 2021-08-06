@@ -14,7 +14,7 @@ const root = path.join(__dirname, '../../');
 
 const app = express();
 app.use(compress());
-if(process.env.NODE_ENV === 'development') {
+if(process.env.NODE_ENV === 'production') {
   app.use(helmet());
   app.use(helmet.contentSecurityPolicy({
     directives: {
