@@ -1,16 +1,18 @@
-import { gql } from 'apollo-server-express';
+const typeDefinitions = `
+  type User {
+    id: Int
+    avatar: String
+    username: String
+  }
 
-const typeDefinitions = gql`
   type Post {
     id: Int
     text: String
     user: User
   }
 
-  type User {
-    id: Int
-    avatar: String
-    username: String
+  type PostFeed {
+    posts: [Post]
   }
 
   type Message {
@@ -23,12 +25,8 @@ const typeDefinitions = gql`
   type Chat {
     id: Int
     messages: [Message]
-    lastMessage: Message
     users: [User]
-  }
-
-  type PostFeed {
-    posts: [Post]
+    lastMessage: Message
   }
 
   type RootQuery {
@@ -40,11 +38,6 @@ const typeDefinitions = gql`
 
   input PostInput {
     text: String!
-  }
-
-  input UserInput {
-    username: String!
-    avatar: String!
   }
 
   input ChatInput {
@@ -74,4 +67,4 @@ const typeDefinitions = gql`
   }
 `;
 
-export default typeDefinitions;
+export default [typeDefinitions];

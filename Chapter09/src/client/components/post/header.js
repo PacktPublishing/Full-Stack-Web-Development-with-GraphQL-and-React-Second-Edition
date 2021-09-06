@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Dropdown from '../helpers/dropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 import { useDeletePostMutation } from '../../apollo/mutations/deletePost';
 
 export default ({post}) => {
@@ -19,5 +19,5 @@ export default ({post}) => {
         <button onClick={() => deletePost({ variables: { postId: post.id }})}>Delete</button>
       </Dropdown>
     </div>
-  )
+  );
 }

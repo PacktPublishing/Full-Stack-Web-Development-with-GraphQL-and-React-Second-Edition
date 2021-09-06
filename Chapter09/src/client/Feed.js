@@ -3,19 +3,17 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import Loading from './components/loading';
 import Error from './components/error';
 import Post from './components/post';
+import FeedList from './components/post/feedlist';
 import { useGetPostsQuery } from './apollo/queries/getPosts';
 import { useAddPostMutation } from './apollo/mutations/addPost';
 
 const Feed = () => {
     const [postContent, setPostContent] = useState('');
-    const [hasMore, setHasMore] = useState(true);
     const [page, setPage] = useState(0);
     const { loading, error, data, fetchMore } = useGetPostsQuery();
     const [addPost] = useAddPostMutation(postContent);
 
-    const loadMore = (fetchMore) => {
-        const self = this;
-
+    const loadMore = () => {
         fetchMore({
             variables: {
                 page: page + 1,
@@ -63,18 +61,7 @@ const Feed = () => {
                     <input type="submit" value="Submit" />
                 </form>
             </div>
-            <div className="feed">
-                <InfiniteScroll
-                    dataLength={posts.length}
-                    next={() => loadMore(fetchMore)}
-                    hasMore={hasMore}
-                    loader={<div className="loader" key={"loader"}>Loading ...</div>}
-                >
-                    {posts.map((post, i) =>
-                        <Post key={post.id} post={post} />
-                    )}
-                </InfiniteScroll>
-            </div>
+            <FeedList posts={posts} fetchMore={loadMore}/>
         </div>
     )
 }

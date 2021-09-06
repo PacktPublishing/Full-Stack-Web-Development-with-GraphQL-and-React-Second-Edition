@@ -5,7 +5,7 @@ import { UserConsumer } from '../context/user';
 import Logout from './logout';
 import Home from './home';
 
-const Bar =  ({ changeLoginState }) => {
+const Bar = ({ changeLoginState }) => {
   return (
     <div className="topbar">
       <div className="inner">

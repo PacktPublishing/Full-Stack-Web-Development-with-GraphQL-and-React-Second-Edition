@@ -16,5 +16,5 @@ export default ({post}) => {
         <button onClick={() => deletePost({ variables: { postId: post.id }})}>Delete</button>
       </Dropdown>
     </div>
-  )
+  );
 }

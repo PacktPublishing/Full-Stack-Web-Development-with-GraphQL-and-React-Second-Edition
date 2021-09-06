@@ -38,8 +38,8 @@ const client = new ApolloClient({
       uri: 'http://localhost:8000/graphql',
       credentials: 'same-origin',
     }),
- ]),
- cache: new InMemoryCache().restore(window.__APOLLO_STATE__)
+  ]),
+  cache: new InMemoryCache().restore(window.__APOLLO_STATE__)
 });
 
 export default client;

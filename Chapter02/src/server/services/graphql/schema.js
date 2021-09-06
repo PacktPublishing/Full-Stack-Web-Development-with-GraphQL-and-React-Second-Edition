@@ -1,6 +1,4 @@
-import { gql } from 'apollo-server-express';
-
-const typeDefinitions = gql`
+const typeDefinitions = `
   type Post {
     id: Int
     text: String
@@ -38,4 +36,4 @@ const typeDefinitions = gql`
   }
 `;
 
-export default typeDefinitions;
+export default [typeDefinitions];

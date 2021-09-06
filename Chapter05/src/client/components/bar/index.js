@@ -3,7 +3,7 @@ import SearchBar from './search';
 import UserBar from './user';
 import { UserConsumer } from '../context/user';
 
-const Bar =  () => {
+const Bar = () => {
   return (
     <div className="topbar">
       <div className="inner">

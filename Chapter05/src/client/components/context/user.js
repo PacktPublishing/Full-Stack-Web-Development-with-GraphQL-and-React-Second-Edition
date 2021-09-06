@@ -1,4 +1,4 @@
-import React, { createContext } from 'react';
+import React from 'react';
 import { ApolloConsumer } from '@apollo/client';
 
 export const UserConsumer = ({ children }) => {

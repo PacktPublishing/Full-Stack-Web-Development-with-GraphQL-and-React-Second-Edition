@@ -1,4 +1,4 @@
-import { gql, useLazyQuery, useQuery } from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 
 export const GET_CURRENT_USER = gql`
   query currentUser {

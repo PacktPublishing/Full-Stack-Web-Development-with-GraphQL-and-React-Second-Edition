@@ -1,6 +1,4 @@
-import { gql } from 'apollo-server-express';
-
-const typeDefinitions = gql`
+const typeDefinitions = `
   directive @auth on QUERY | FIELD_DEFINITION | FIELD
 
   type Post {
@@ -36,7 +34,7 @@ const typeDefinitions = gql`
   type RootQuery {
     currentUser: User @auth
     posts: [Post]
-    chats: [Chat]
+    chats: [Chat] @auth
     chat(chatId: Int): Chat
     postsFeed(page: Int, limit: Int): PostFeed @auth
     usersSearch(page: Int, limit: Int, text: String!): UsersSearch
@@ -44,11 +42,6 @@ const typeDefinitions = gql`
 
   input PostInput {
     text: String!
-  }
-
-  input UserInput {
-    username: String!
-    avatar: String!
   }
 
   input ChatInput {
@@ -102,4 +95,4 @@ const typeDefinitions = gql`
   }
 `;
 
-export default typeDefinitions;
+export default [typeDefinitions];

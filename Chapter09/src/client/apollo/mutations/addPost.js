@@ -1,6 +1,5 @@
-import { gql } from '@apollo/client';
+import { gql, useMutation } from '@apollo/client';
 import { USER_ATTRIBUTES } from '../fragments/userAttributes';
-import { useMutation } from '@apollo/client';
 
 export const ADD_POST = gql`
   mutation addPost($post : PostInput!) {

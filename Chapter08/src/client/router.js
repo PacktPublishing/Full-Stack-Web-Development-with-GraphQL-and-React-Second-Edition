@@ -8,7 +8,7 @@ export const routing = ({ changeLoginState, loggedIn }) => {
   return (
     <Router>
       <Switch>
-        <PrivateRoute path="/app" component={() => <Main changeLoginState={changeLoginState} />} loggedIn={loggedIn} />
+        <PrivateRoute path="/app" component={() => <Main changeLoginState={changeLoginState} />} loggedIn={loggedIn}/>
         <PrivateRoute path="/user/:username" component={props => <User {...props} changeLoginState={changeLoginState}/>} loggedIn={loggedIn}/>
         <LoginRoute exact path="/" component={() => <LoginRegisterForm changeLoginState={changeLoginState}/>} loggedIn={loggedIn}/>
         <Route component={NotFound} />
@@ -33,7 +33,8 @@ const LoginRoute = ({ component: Component, ...rest }) => (
     rest.loggedIn === false
       ? <Component {...props} />
       : <Redirect to={{
-          pathname: (typeof props.location.state !== typeof undefined) ? props.location.state.from.pathname : '/app',
+          pathname: (typeof props.location.state !== typeof undefined) ?
+          props.location.state.from.pathname : '/app',
         }} />
   )} />
 )

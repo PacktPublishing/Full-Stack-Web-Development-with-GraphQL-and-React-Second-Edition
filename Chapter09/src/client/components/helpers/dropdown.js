@@ -1,34 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 export default ({ trigger, children }) => {
   const [show, setShow] = useState(false);
+  const wrapperRef = useRef(null);
+  useOutsideClick(wrapperRef);
 
-  const handleClick = (show) => {
-    if(!show) {
-      document.addEventListener('click', handleClick.bind(null, [show]), true);
-    } else {
-      document.removeEventListener('click', handleClick.bind(null, [show]), true);
-    }
-    setShow(!show);
+  function useOutsideClick(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShow(false);
+        }
+      }
+
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
   }
-
-  useEffect(() => {
-    return () => {
-      document.removeEventListener('click', handleClick.bind(null, [show]), true);
-    }
-  }, []);
 
   return(
     <div className="dropdown">
       <div>
-        <div className="trigger" onClick={() => handleClick(show)}>
+        <div className="trigger" onClick={() => setShow(!show)}>
           {trigger}
         </div>
-        { show &&
-          <div className="content">
-            {children}
-          </div>
-        }
+        <div ref={wrapperRef}>
+          { show &&
+            <div className="content">
+              {children}
+            </div>
+          }
+        </div>
       </div>
     </div>
   )

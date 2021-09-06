@@ -1,16 +1,14 @@
-import { gql } from 'apollo-server-express';
-
-const typeDefinitions = gql`
-  type Post {
-    id: Int
-    text: String
-    user: User
-  }
-
+const typeDefinitions = `
   type User {
     id: Int
     avatar: String
     username: String
+  }
+
+  type Post {
+    id: Int
+    text: String
+    user: User
   }
 
   type Message {
@@ -34,11 +32,6 @@ const typeDefinitions = gql`
 
   input PostInput {
     text: String!
-  }
-
-  input UserInput {
-    username: String!
-    avatar: String!
   }
 
   input ChatInput {
@@ -68,4 +61,4 @@ const typeDefinitions = gql`
   }
 `;
 
-export default typeDefinitions;
+export default [typeDefinitions];

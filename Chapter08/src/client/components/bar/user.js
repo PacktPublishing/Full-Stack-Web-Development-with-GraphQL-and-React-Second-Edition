@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState } from 'react';
 import AvatarModal from '../avatarModal';
 
 const UserBar = ({ user }) => {

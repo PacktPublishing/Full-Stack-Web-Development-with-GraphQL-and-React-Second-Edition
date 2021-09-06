@@ -4,7 +4,7 @@ import UserBar from './user';
 import { UserConsumer } from '../context/user';
 import Logout from './logout';
 
-const Bar =  ({ changeLoginState }) => {
+const Bar = ({ changeLoginState }) => {
   return (
     <div className="topbar">
       <div className="inner">

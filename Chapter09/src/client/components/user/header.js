@@ -10,8 +10,7 @@ export const UserProfileHeader = ({user}) => {
       </div>
       <div className="information">
         <p>{username}</p>
-        <p>You can provide further information here and build
-        your really personal header component for your users.</p>
+        <p>You can provide further information here and build your really personal header component for your users.</p>
       </div>
     </div>
   )

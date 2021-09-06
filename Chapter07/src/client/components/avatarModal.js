@@ -83,7 +83,7 @@ const AvatarModal = ({ isOpen, showModal }) => {
         (<div className="drop" {...getRootProps()}>
           <input {...getInputProps()} />
           {isDragActive ? <p>Drop the files here ...</p> : <p>Drag 'n' drop some files here, or click to select files</p>}
-        </div>)
+          </div>)
       }
       {file && <Cropper ref={cropperRef} src={file.src} style={{ height: 400, width: "100%" }} initialAspectRatio={16 / 9} guides={false} crop={onCrop}/>}
       {file && (

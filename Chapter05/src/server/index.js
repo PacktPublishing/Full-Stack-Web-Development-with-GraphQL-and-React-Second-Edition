@@ -3,11 +3,13 @@ import path from 'path';
 import helmet from 'helmet';
 import cors from 'cors';
 import compress from 'compression';
+import servicesLoader from './services';
 import db from './database';
+
 const utils = {
   db,
 };
-import servicesLoader from './services';
+
 const services = servicesLoader(utils);
 
 const root = path.join(__dirname, '../../');
@@ -37,7 +39,10 @@ const serviceNames = Object.keys(services);
 for (let i = 0; i < serviceNames.length; i += 1) {
   const name = serviceNames[i];
   if (name === 'graphql') {
-    services[name].applyMiddleware({ app });
+    (async () => {
+      await services[name].start();
+      services[name].applyMiddleware({ app });
+    })();
   } else {
     app.use(`/${name}`, services[name]);
   }

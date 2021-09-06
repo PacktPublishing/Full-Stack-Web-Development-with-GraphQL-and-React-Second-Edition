@@ -16,7 +16,7 @@ const UserProfile = ({ username }) => {
   return (
     <div className="user">
       <div className="inner">
-          <UserHeader user={user.user} />
+        <UserHeader user={user.user} />
       </div>
       <div className="container">
         <FeedList posts={posts.postsFeed.posts} fetchMore={fetchMore}/>

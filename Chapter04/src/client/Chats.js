@@ -2,21 +2,20 @@ import React, { useState } from 'react';
 import { gql, useQuery } from '@apollo/client';
 import Chat from './Chat';
 
-const GET_CHATS = gql`
-  query chats {
-    chats {
+const GET_CHATS = gql`{
+  chats {
+    id
+    users {
       id
-      users {
-        id
-        avatar
-        username
-      }
-      lastMessage {
-        text
-      }
+      avatar
+      username
+    }
+    lastMessage {
+      text
     }
   }
-`;
+}`;
+
 
 const usernamesToString = (users)  => {
   const userList = users.slice(1);
@@ -75,7 +74,7 @@ const Chats = () => {
     <div className="wrapper">
       <div className="chats">
         {chats.map((chat, i) =>
-          <div key={chat.id} className="chat" onClick={() => openChat(chat.id)}>
+          <div key={"chat" + chat.id} className="chat" onClick={() => openChat(chat.id)}>
             <div className="header">
               <img src={(chat.users.length > 2 ? '/public/group.png' : chat.users[1].avatar)} />
               <div>

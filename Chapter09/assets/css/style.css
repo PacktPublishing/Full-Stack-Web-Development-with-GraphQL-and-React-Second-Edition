@@ -460,3 +460,17 @@ button.uploadAvatar {
     display: inline-block;
     vertical-align: middle;
 }
+
+.topbar .buttons {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    height: calc(100% - 10px);
+}
+
+.topbar .buttons > * {
+    height: 100%;
+    margin-right: 5px;
+    border: none;
+    border-radius: 5px;
+}
