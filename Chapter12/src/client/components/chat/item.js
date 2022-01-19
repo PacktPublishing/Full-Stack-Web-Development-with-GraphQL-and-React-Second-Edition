@@ -43,7 +43,7 @@ const ChatItem = ({ user, chat, openChat }) => {
         <img src={getAvatar(user, chat.users)} />
         <div>
           <h2>{shorten(usernamesToString(user, chat.users))}</h2>
-          <span>{shorten(chat?.lastMessage?.text)}</span>
+          <span>{chat?.lastMessage?.text}</span>
         </div>
       </div>
     </div>
