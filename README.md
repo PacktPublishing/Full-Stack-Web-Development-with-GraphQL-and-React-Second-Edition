@@ -66,6 +66,6 @@ Currently, he works as Engineering Manager on a micro service-oriented architect
 
 
 ## Other books by the authors
-* Hands-on Full-Stack Web Development with GraphQL and React(https://www.packtpub.com/product/hands-on-full-stack-web-development-with-graphql-and-react/9781789134520)
+* [Hands-on Full-Stack Web Development with GraphQL and React](https://www.packtpub.com/product/hands-on-full-stack-web-development-with-graphql-and-react/9781789134520)
 
 
