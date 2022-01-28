@@ -10,7 +10,7 @@ This is the code repository for [Full-Stack Web Development with GraphQL and Rea
 ## What is this book about?
 React and GraphQL combined would provide a very dynamic, efficient, and stable tech stack to build web-based applications. GraphQL is a modern solution for querying an API which represents an alternative to REST and is the next evolution in web development.
 
-This book covers the following exciting features: <First 5 What you'll learn points>
+This book covers the following exciting features:
 * Build a GraphQL API by implementing models and schemas with Apollo and Sequelize
 * Set up an Apollo Client and build front end components using React
 * Write Reusable React Components and use React Hooks
