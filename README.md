@@ -5,7 +5,7 @@
 
 This is the code repository for [Full-Stack Web Development with GraphQL and React](https://www.packtpub.com/product/full-stack-web-development-with-graphql-and-react-second-edition/9781801077880), published by Packt.
 
-**Build scalable full-stack applications with React while learning to solve complex problems with GraphQL**
+**Taking React from frontend to full-stack with GraphQL and Apollo**
 
 ## What is this book about?
 React and GraphQL combined would provide a very dynamic, efficient, and stable tech stack to build web-based applications. GraphQL is a modern solution for querying an API which represents an alternative to REST and is the next evolution in web development.
@@ -15,7 +15,7 @@ This book covers the following exciting features:
 * Set up an Apollo Client and build front end components using React
 * Write Reusable React Components and use React Hooks
 * Authenticate and query user data using GraphQL
-* Use Jest to write test cases for your full-stack application
+* Use Mocha to write test cases for your full-stack application
 * Deploy your application to AWS using Docker and CircleCIrs
 
 If you feel this book is for you, get your [copy](https://www.amazon.com/dp/1801077886) today!
@@ -60,9 +60,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 
 ## Get to Know the Author
 **Sebastian Grebe**
-is a verified Computer Science Expert for Application Development. He is a young entrepreneur working on a variety of products targeting the consumer market. He specializes in web development using the newest technologies like React, Phoenix Framework, Kubernetes, and much more. Furthermore, he developed professionalism merging old and new applications, developing cross-platform apps with React Native, and writing efficient APIs and backends with Node.js and Elixir.
-Currently, he works as Engineering Manager on a micro service-oriented architecture and micro frontends to power a scalable E-commerce platform
-
+is a verified computer science expert for application development. He is a young entrepreneur working on a variety of products targeting the consumer market. He specializes in web development using the newest technologies, such as React, the Phoenix framework, Kubernetes, and many more. Furthermore, he has experience in merging old and new applications, developing cross-platform apps with React Native, and writing efficient APIs and backends with Node.js and Elixir.
+Currently, he works as an engineering manager on a microservice-oriented architecture using micro frontends to power a scalable e-commerce platform
 
 
 ## Other books by the authors
