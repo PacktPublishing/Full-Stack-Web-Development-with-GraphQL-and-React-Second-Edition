@@ -53,6 +53,9 @@ With the following software and hardware list you can run all code files present
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781801077880_ColorImages.pdf).
 
+## Errata 
+ * Page 17 (code snippet 2, line 6):  **{ initialPosts.map((post, i) =>** _should be_ **{posts.map((post, i) =>**
+
 ### Related products <Other books you may enjoy>
 * Full-Stack React, TypeScript, and Node [[Packt]](https://www.packtpub.com/product/full-stack-react-typescript-and-node/9781839219931) [[Amazon]](https://www.amazon.com/dp/1839219939)
 
