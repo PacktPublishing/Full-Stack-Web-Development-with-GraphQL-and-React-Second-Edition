@@ -71,3 +71,7 @@ Currently, he works as an engineering manager on a microservice-oriented archite
 * [Hands-on Full-Stack Web Development with GraphQL and React](https://www.packtpub.com/product/hands-on-full-stack-web-development-with-graphql-and-react/9781789134520)
 
 
+### Download a free PDF
+
+ <i>If you have already purchased a print or Kindle version of this book, you can get a DRM-free PDF version at no cost.<br>Simply click on the link to claim your free PDF.</i>
+<p align="center"> <a href="https://packt.link/free-ebook/9781801077880">https://packt.link/free-ebook/9781801077880 </a> </p>
