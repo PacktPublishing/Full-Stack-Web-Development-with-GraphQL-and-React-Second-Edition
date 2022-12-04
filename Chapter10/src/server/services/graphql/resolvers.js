@@ -220,7 +220,7 @@ export default function resolver() {
       addMessage(root, { message }, context) {
         logger.log({
             level: 'info',
-            message: 'Message was created',
+            message: 'Chat was created',
         });
         return Message.create({
             ...message,

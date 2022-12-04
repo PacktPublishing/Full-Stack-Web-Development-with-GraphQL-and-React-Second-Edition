@@ -341,7 +341,7 @@ export default function resolver() {
           ]).then(() => {
             logger.log({
               level: 'info',
-              message: 'Message was created',
+              message: 'Chat was created',
             });
             return newChat;
           });
