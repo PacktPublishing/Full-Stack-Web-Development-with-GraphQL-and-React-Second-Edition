@@ -1,4 +1,16 @@
 
+### Get this product for $5
+
+<i>Packt is having its biggest sale of the year. Get this eBook or any other book, video, or course that you like just for $5 each</i>
+
+
+<b><p align='center'>[Buy now](https://packt.link/9781801077880)</p></b>
+
+
+<b><p align='center'>[Buy similar titles for just $5](https://subscription.packtpub.com/search)</p></b>
+
+
+
 # Full-Stack Web Development with GraphQL and React - Second Edition
 
 <a href="https://www.packtpub.com/product/full-stack-web-development-with-graphql-and-react-second-edition/9781801077880"><img src="https://static.packt-cdn.com/products/9781801077880/cover/smaller" alt="Full-Stack Web Development with GraphQL and React-second-edition" height="256px" align="right"></a>
